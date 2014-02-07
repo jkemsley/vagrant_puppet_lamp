@@ -42,9 +42,9 @@ apache::vhost { 'dev.local':
   priority      => '1',
 }
 
-apt::ppa { 'ppa:ondrej/php5-experimental':
-  before  => Class['php'],
-}
+# apt::ppa { 'ppa:ondrej/php5-experimental':
+#   before  => Class['php'],
+# }
 
 class { 'php':
   service => 'apache',
@@ -56,6 +56,8 @@ php::module { 'curl': }
 php::module { 'intl': }
 php::module { 'mcrypt': }
 php::module { 'mysql': }
+php::module { 'gd': }
+php::module { 'xmlrpc': }
 
 class { 'php::devel':
   require => Class['php'],
